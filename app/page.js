@@ -1,6 +1,7 @@
 "use client";
 
 import { DataTable } from "./components/DataTable";
+import WithFilter from "./components/WithFilter";
 
 const productos = [
   {
@@ -40,12 +41,15 @@ const usuariosHeaders = [
   { columnName: "nombre", columnTitle: "Nombre" },
 ];
 
+const DataTableWithFilter = WithFilter(DataTable, productos, productosHeaders)
+
 export default function Home() {
   return (
     <div className="flex-col text-center">
       <h1 className="w-full">Ejemplo de HOC - High Order Component</h1>
       <DataTable items={productos} headers={productosHeaders} />
       <DataTable items={usuarios} headers={usuariosHeaders} />
+      <DataTableWithFilter />
     </div>
   );
 }
