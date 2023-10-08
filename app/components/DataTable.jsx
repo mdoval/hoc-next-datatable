@@ -6,13 +6,13 @@ export function DataTable({ items, headers }) {
       <thead>
         <tr>
           {headers.map((header) => (
-              <th>{header.columnTitle}</th>
+              <th key={header.columnName} >{header.columnTitle}</th>
           ))}
         </tr>
       </thead>
       <tbody>
         {items.map((item) => (
-          <DataTableItem item={item} headers={headers} />
+          <DataTableItem key={item.id} item={item} headers={headers} />
         ))}
       </tbody>
     </table>

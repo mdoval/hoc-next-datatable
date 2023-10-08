@@ -41,15 +41,37 @@ const usuariosHeaders = [
   { columnName: "nombre", columnTitle: "Nombre" },
 ];
 
-const DataTableWithFilter = WithFilter(DataTable, productos, productosHeaders)
+//Datatable con Filtro de titulo de Productos
+const DataTableProductosWithFilter = WithFilter(
+  DataTable,
+  productos,
+  productosHeaders,
+  "titulo"
+);
+
+//Datatable con Filtro de nombre de Usuario
+const DataTableUsuariosWithFilter = WithFilter(
+  DataTable,
+  usuarios,
+  usuariosHeaders,
+  "nombre"
+);
 
 export default function Home() {
   return (
     <div className="flex-col text-center">
       <h1 className="w-full">Ejemplo de HOC - High Order Component</h1>
-      <DataTable items={productos} headers={productosHeaders} />
-      <DataTable items={usuarios} headers={usuariosHeaders} />
-      <DataTableWithFilter />
+      <div className="flex">
+        <div className="flex-col w-1/2">
+          <DataTableProductosWithFilter />
+          <DataTable items={productos} headers={productosHeaders} />
+        </div>
+        <div className="flex-col w-1/2">
+          <DataTableUsuariosWithFilter />
+          <DataTable items={usuarios} headers={usuariosHeaders} />
+        </div>
+      </div>
+
     </div>
   );
 }
